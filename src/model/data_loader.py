@@ -119,7 +119,7 @@ def get_dataloader(
             ds_dict = {
                 "file_path": "annotations/train.json",
                 "img_path": "images/train",
-                "transform": get_transform(True),
+                "transforms": get_transform(True),
             }
             dl_dict = {
                 "shuffle": False if params.distributed else True,
@@ -128,16 +128,16 @@ def get_dataloader(
             ds_dict = {
                 "file_path": "annotations/val.json",
                 "img_path": "images/test",
-                "transform": get_transform(False),
+                "transforms": get_transform(False),
             }
             dl_dict = {
                 "shuffle": False,
             }
 
-        dataset = FashionpediaDataset(root=params.root, **ds_dict)
+        dataset = FashionpediaDataset(root=params.data_path, **ds_dict)
         if params.distributed:
             sampler = DistributedSampler(
-                dataset, num_replicas=params.local_world_size, rank=params.rank, shuffle=True, seed=42
+                dataset, num_replicas=params.world_size, rank=params.rank, shuffle=True, seed=42
             )
         else:
             sampler = None

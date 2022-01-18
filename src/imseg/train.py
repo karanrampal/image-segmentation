@@ -25,6 +25,12 @@ def get_args_parser():
         help="device (Use cuda or cpu Default: cuda)",
     )
     parser.add_argument(
+        "--num-classes",
+        default=47,
+        type=int,
+        help="number of classes to be classified",
+    )
+    parser.add_argument(
         "-b",
         "--batch-size",
         default=4,
@@ -40,7 +46,7 @@ def get_args_parser():
     )
     parser.add_argument(
         "-j",
-        "--workers",
+        "--num-workers",
         default=4,
         type=int,
         metavar="N",
@@ -101,13 +107,18 @@ def get_args_parser():
         help="Use sync batch norm",
         action="store_true",
     )
+    parser.add_argument(
+        "--pin-memory",
+        action="store_true",
+        help="Use pin memory for data loading",
+    )
 
     # distributed training parameters
     parser.add_argument(
         "--world-size", default=1, type=int, help="number of distributed processes"
     )
     parser.add_argument(
-        "--local-rank", default=1, type=int, help="local rank of distributed processes"
+        "--rank", default=0, type=int, help="local rank of distributed processes"
     )
     parser.add_argument(
         "--dist-url",
@@ -187,7 +198,7 @@ def main():
         if args.amp:
             scaler.load_state_dict(checkpoint["scaler"])
 
-    print("Start training")
+    print("Training")
     train(
         model,
         model_without_ddp,
