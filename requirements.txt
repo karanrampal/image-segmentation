@@ -1,0 +1,11 @@
+numpy
+torch
+torchvision
+matplotlib
+pycocotools
+pandas
+tqdm
+mypy
+pylint
+isort
+black

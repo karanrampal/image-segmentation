@@ -1,0 +1,33 @@
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.coverage.*
+.cache
+*.cover
+.pytest_cache/
+cover/
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.venv
+
+# mypy
+.mypy_cache/
