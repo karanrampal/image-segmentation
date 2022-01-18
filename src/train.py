@@ -110,6 +110,7 @@ def get_args_parser():
     parser.add_argument(
         "--pin-memory",
         action="store_true",
+        default=True,
         help="Use pin memory for data loading",
     )
 
