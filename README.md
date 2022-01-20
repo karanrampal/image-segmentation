@@ -24,6 +24,7 @@ src/
 tests/
     __init__.py
 .gitignore
+Makefile
 pyproject.toml
 README.md
 requirements.txt
@@ -60,4 +61,10 @@ I used Anaconda with python3, but used pip to install the libraries so that they
 conda create -n <yourenvname> python=<3.x>
 conda activate <yourenvname>
 pip install -r requirements.txt
+```
+or if you wish to use `make` then,
+```
+conda create -n <yourenvname> python=<3.x>
+conda activate <yourenvname>
+make install
 ```

@@ -9,3 +9,5 @@ mypy
 pylint
 isort
 black
+pytest
+pytest-cov
