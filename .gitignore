@@ -31,3 +31,6 @@ docs/_build/
 
 # mypy
 .mypy_cache/
+
+# Project specific
+experiments/
