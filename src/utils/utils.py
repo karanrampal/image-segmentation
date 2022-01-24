@@ -4,6 +4,7 @@ import datetime
 import errno
 import os
 import time
+from typing import Dict, List
 from collections import defaultdict, deque
 import json
 
@@ -338,3 +339,22 @@ def init_distributed_mode(args):
     )
     torch.distributed.barrier()
     setup_for_distributed(args.rank == 0)
+
+
+def filter_data(preds: Dict[str, torch.Tensor], thr: List[int]) -> Dict[str, torch.Tensor]:
+    """Filter the predictions based on given thresholds"""
+    boxes = preds["boxes"].detach()
+    labels = preds["labels"].detach()
+    masks = preds["masks"].detach()
+    scores = preds["scores"].detach()
+
+    m_1 = scores.view(-1, 1) >= torch.tensor(thr).view(1, -1)
+    m_2 = (labels - 1).view(-1, 1) == torch.arange(46, dtype=torch.int).view(1, -1)
+    mask = (m_1 * m_2).sum(dim=1, dtype=torch.bool)
+
+    out = {}
+    out["scores"] = scores[mask]
+    out["boxes"] = boxes[mask]
+    out["labels"] = labels[mask]
+    out["masks"] = masks[mask]
+    return out

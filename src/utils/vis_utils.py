@@ -39,8 +39,8 @@ def vis_data(img: np.ndarray,
         ax[i].imshow(img)
         ax[i].imshow(masks[j].squeeze(), alpha=0.7)
 
-        label = labels[j]
-        title = f"Label: {label} ({categories[label - 1]})"
+        label = labels[j] - 1
+        title = f"Label: {label} ({categories[label]})"
         if "scores" in target:
             title += f" Score: {scores[j]}"
         ax[i].set_title(title)
