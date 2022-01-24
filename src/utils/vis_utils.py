@@ -42,7 +42,7 @@ def vis_data(img: np.ndarray,
         label = labels[j] - 1
         title = f"Label: {label} ({categories[label]})"
         if "scores" in target:
-            title += f" Score: {scores[j]}"
+            title += f" Score: {scores[j]:.3f}"
         ax[i].set_title(title)
 
         x1, y1, x2, y2 = boxes[j]
