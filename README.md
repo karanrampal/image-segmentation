@@ -12,6 +12,9 @@ dist/
 notebooks/
     main.ipynb
 scripts/
+    upload_configs.sh
+    upload_notebooks.sh
+    uploadwhl.sh
 src/
     model/
         __init__.py
