@@ -1,3 +1,4 @@
+# Project specific
 numpy
 torch
 torchvision
@@ -5,9 +6,13 @@ matplotlib
 pycocotools
 pandas
 tqdm
+
+# Linting
 mypy
 pylint
 isort
 black
+
+# Testing
 pytest
 pytest-cov

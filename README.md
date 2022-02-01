@@ -4,11 +4,14 @@ Instance segmentation for the fasionpedia dataset.
 ## Directory structure
 Structure of the project
 ```
+configs/
+    main.yml
 dist/
     ImageSegmentation-0.0.1-py3-none-any.whl
     ImageSegmentation-0.0.1.tar.gz
 notebooks/
     main.ipynb
+scripts/
 src/
     model/
         __init__.py

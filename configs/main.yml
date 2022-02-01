@@ -1,0 +1,17 @@
+# Paths
+data_path: /dbfs/fashionpedia
+output_dir: /dbfs/imseg/dist
+
+# Model
+device: cuda
+num_classes: 47
+batch_size: 4
+epochs: 5
+num_workers: 4
+pin_memory: True
+
+# Optimizer
+lr: 0.005
+momentum: 0.9
+weight_decay: 0.0005
+lr_scheduler: multisteplr
