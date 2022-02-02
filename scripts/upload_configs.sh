@@ -7,7 +7,7 @@ cd ..
 if [ $# == 0 ]; then
   branch=$(git rev-parse --abbrev-ref HEAD)
   user=$(whoami)
-  profile="hm2vec"
+  profile="DEFAULT"
 else
   branch=$1
   user=$2
@@ -15,6 +15,6 @@ else
 fi
 
 echo "Copy configs directory"
-dbfs cp -r configs "dbfs:/hm2vec/${user}/${branch}/configs/" --overwrite --profile "$profile"
+dbfs cp -r configs "dbfs:/imseg/${user}/${branch}/configs/" --overwrite --profile "$profile"
 
 echo "Done"
